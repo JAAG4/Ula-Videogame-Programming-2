@@ -14,19 +14,19 @@
 #include <src/World.hpp>
 #include <src/states/BaseState.hpp>
 
-class PlayingState: public BaseState
+class PlayingState : public BaseState
 {
 
 public:
-    PlayingState(StateMachine* sm) noexcept;
+    PlayingState(StateMachine *sm) noexcept;
 
-    void enter(std::shared_ptr<World> _world = nullptr, std::shared_ptr<Bird> _bird = nullptr) noexcept override;
+    void enter(std::shared_ptr<World> _world = nullptr, std::shared_ptr<Bird> _bird = nullptr, int score = 0) noexcept override;
 
-    void handle_inputs(const sf::Event& event) noexcept override;
+    void handle_inputs(const sf::Event &event) noexcept override;
 
     void update(float dt) noexcept override;
 
-    void render(sf::RenderTarget& target) const noexcept override;
+    void render(sf::RenderTarget &target) const noexcept override;
 
 private:
     std::shared_ptr<Bird> bird;

@@ -21,21 +21,20 @@ class Bird;
 class BaseState
 {
 public:
-    BaseState(StateMachine* sm) : state_machine(sm) {}
+    BaseState(StateMachine *sm) : state_machine(sm) {}
 
     virtual ~BaseState() {}
 
-    virtual void enter(std::shared_ptr<World> world, std::shared_ptr<Bird> bird) noexcept {}
+    virtual void enter(std::shared_ptr<World> world, std::shared_ptr<Bird> bird, int score) noexcept {}
 
     virtual void exit() noexcept {}
 
-    virtual void handle_inputs(const sf::Event& event) noexcept {}
+    virtual void handle_inputs(const sf::Event &event) noexcept {}
 
     virtual void update(float dt) noexcept {}
 
-    virtual void render(sf::RenderTarget& target) const noexcept {}
-
+    virtual void render(sf::RenderTarget &target) const noexcept {}
 
 protected:
-    StateMachine* state_machine;
+    StateMachine *state_machine;
 };

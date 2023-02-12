@@ -13,15 +13,15 @@
 #include <src/states/CountDownState.hpp>
 #include <src/states/StateMachine.hpp>
 
-CountDownState::CountDownState(StateMachine* sm) noexcept
+CountDownState::CountDownState(StateMachine *sm) noexcept
     : BaseState{sm}
 {
-
 }
 
-void CountDownState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _bird) noexcept
+void CountDownState::enter(std::shared_ptr<World> _world, std::shared_ptr<Bird> _bird, int score) noexcept
 {
     world = std::make_shared<World>(false);
+    score = 0;
 }
 
 void CountDownState::update(float dt) noexcept
@@ -42,7 +42,7 @@ void CountDownState::update(float dt) noexcept
     world->update(dt);
 }
 
-void CountDownState::render(sf::RenderTarget& target) const noexcept
+void CountDownState::render(sf::RenderTarget &target) const noexcept
 {
     world->render(target);
     render_text(target, Settings::VIRTUAL_WIDTH / 2, Settings::VIRTUAL_HEIGHT / 2, std::to_string(counter), Settings::HUGE_TEXT_SIZE, "font", sf::Color::White, true);
